@@ -1,1 +1,16 @@
-<p>people works!</p>
+<ngx-spinner></ngx-spinner>
+
+<div class="container">
+  <div class="mt-5">
+    <h1 class="text-capitalize mt-3 mb-0">trending Movies</h1>
+    <div class="row pt-5 mt-4">
+      <div routerLink="/personDetails/{{person.id}}"
+        *ngFor="let person of trendingPeople | paginate: { itemsPerPage: 20, currentPage: page , totalItems: APIresponse }"
+        class="col-md-2 px-2">
+        <img class="w-100" src="https://image.tmdb.org/t/p/original/{{person.profile_path}}" alt="">
+        <h5 class="mb-4  mt-3">{{person.name}}</h5>
+      </div>
+      <pagination-controls class="text-center mt-4" (pageChange)="page = $event">
+      </pagination-controls>
+    </div>
+  </div>

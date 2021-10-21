@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +15,16 @@ import { RegisterComponent } from './register/register.component';
 import { DetailsComponent } from './details/details.component';
 import { NetworksComponent } from './networks/networks.component';
 import { ReactiveFormsModule } from '@angular/forms';
-ReactiveFormsModule
+import { HttpClientModule } from "@angular/common/http"
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PersonDetailsComponent } from './person-details/person-details.component';
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +39,17 @@ ReactiveFormsModule
     SigninComponent,
     RegisterComponent,
     DetailsComponent,
-    NetworksComponent
+    NetworksComponent,
+    PersonDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

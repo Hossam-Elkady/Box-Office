@@ -1,0 +1,12 @@
+.nav-item{
+  cursor: pointer;
+}
+.active-link{
+  box-shadow: 2px 2px 5px black;
+  background-color: #0f3263;
+  border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -ms-border-radius: 10px ;
+  -o-border-radius: 10px ;
+}

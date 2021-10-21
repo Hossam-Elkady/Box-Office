@@ -1,1 +1,30 @@
-<p>details works!</p>
+<ngx-spinner></ngx-spinner>
+<div class="container">
+  <div class="full">
+    <div class="row mt-5">
+      <div class="col-lg-4 mt-5">
+        <img src="{{posterPath+itemDetails.poster_path}}" alt="{{itemDetails.original_title}}" class="w-100 rounded">
+        <p class="text-center">
+
+          <a href="{{itemDetails.homepage}}" class="text-center shadow-lg" target="_blank">
+            <p class="btn shadow-lg last">See More</p>
+          </a>
+        </p>
+      </div>
+      <div class="col-lg-8 mt-5 px-5">
+        <h1 class="mt-3">{{itemDetails.original_title}}{{itemDetails.name}}</h1>
+        <p class="tagline h3">{{itemDetails.tagline}}</p>
+        <div class="d-flex mt-5 align-items-center">
+          <p *ngFor="let genreName of itemDetails.genres" class="btn btn-warning me-2">{{genreName.name}}</p>
+        </div>
+        <div class="details">
+          <p>Vote: {{itemDetails.vote_average}}</p>
+          <p>Vote Count: {{itemDetails.vote_count}}</p>
+          <p>Popularity: {{itemDetails.popularity}}</p>
+          <p>release Date: {{itemDetails.release_date}}{{itemDetails.first_air_date}}</p>
+        </div>
+        <p class="h4 tagline mb-4 overview">{{itemDetails.overview}}</p>
+      </div>
+    </div>
+  </div>
+</div>

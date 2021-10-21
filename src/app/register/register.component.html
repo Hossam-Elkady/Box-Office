@@ -1,32 +1,41 @@
-<h1 class="mt-5">Register</h1>
-<form [formGroup]="registerForm" (ngSubmit)="submitFormGroup()">
-  <div class="my-3">
-    <label class="my-2">First Name</label>
-    <input type="text" class="form-control" placeholder="Enter your First Name" formControlName="first_name">
-    <div class="errors d-none">
-      <p class="text-warning my-2">enter valid name</p>
+<div class="container">
+  <h1 class="mt-5 ">Register</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="submitFormGroup()">
+    <div class="my-3">
+      <label class="my-2 text-warning">First Name</label>
+      <input type="text" class="form-control" placeholder="Enter your First Name" formControlName="first_name">
+      <div class="errors" *ngIf="registerForm.controls.first_name.invalid&&registerForm.controls.first_name.touched">
+        <p class="text-warning my-2" *ngIf="registerForm.controls.first_name.errors?.required">first name is required</p>
+        <p class="text-warning my-2" *ngIf="registerForm.controls.first_name.errors?.minlength">first name min Length is 3 letters</p>
+        <p class="text-warning my-2" *ngIf="registerForm.controls.first_name.errors?.maxlength">first name max Length is 10 letters</p>
+      </div>
     </div>
-  </div>
-  <div class="my-3">
-    <label class="my-2">Last Name</label>
-    <input type="text" class="form-control" placeholder="Enter your Last Name" formControlName="last_name">
-    <div class="errors d-none">
-      <p class="text-warning my-2">enter valid name</p>
+    <div class="my-3">
+      <label class="my-2 text-warning">Last Name</label>
+      <input type="text" class="form-control" placeholder="Enter your Last Name" formControlName="last_name">
+      <div class="errors" *ngIf="registerForm.controls.last_name.invalid&&registerForm.controls.last_name.touched">
+        <p class="text-warning my-2" *ngIf="registerForm.controls.last_name.errors?.required">last name is required</p>
+        <p class="text-warning my-2" *ngIf="registerForm.controls.last_name.errors?.minlength">last name min Length is 3 letters</p>
+        <p class="text-warning my-2" *ngIf="registerForm.controls.last_name.errors?.maxlength">last name max Length is 10 letters</p>
+      </div>
     </div>
-  </div>
-  <div class="my-3">
-    <label class="my-2">Email</label>
-    <input type="email" class="form-control" placeholder="Enter your Email" formControlName="email">
-    <div class="errors d-none">
-      <p class="text-warning my-2">enter valid email</p>
+    <div class="my-3">
+      <label class="my-2 text-warning">Email</label>
+      <input type="email" class="form-control" placeholder="Enter your Email" formControlName="email">
+      <div class="errors" *ngIf="registerForm.controls.email.invalid&&registerForm.controls.email.touched">
+        <p class="text-warning my-2" *ngIf="registerForm.controls.email.errors?.email">enter valid email</p>
+        <p class="text-warning my-2" *ngIf="registerForm.controls.email.errors?.required">email is required</p>
+      </div>
     </div>
-  </div>
-  <div class="my-3">
-    <label class="my-2">Password</label>
-    <input type="password" class="form-control" placeholder="Enter your Password" formControlName="password">
-    <div class="errors d-none">
-      <p class="text-warning my-2">enter valid password</p>
+    <div class="my-3">
+      <label class="my-2 text-warning">Password</label>
+      <input type="password" class="form-control" placeholder="Enter your Password" formControlName="password">
+      <div class="errors d-none">
+        <p class="text-warning my-2" *ngIf="registerForm.controls.password.errors?.required">enter valid password</p>
+      </div>
     </div>
-  </div>
-  <button class="submit btn btn-warning mt-3">Submit</button>
-</form>
+    <button [disabled]="registerForm.invalid" class="submit btn btn-warning mt-3 text-white">Submit</button>
+    <p class="text-warning mt-5" *ngIf="registered">this email is already registered</p>
+  </form>
+
+</div>

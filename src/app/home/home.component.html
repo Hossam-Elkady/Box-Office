@@ -1,1 +1,78 @@
-<p>home works!</p>
+<ngx-spinner></ngx-spinner>
+<div class="container">
+  <div class="">
+    <div class="row pt-5 mt-5">
+      <div class="col-lg-4 d-flex justify-content-center flex-column ">
+        <div class="w-25">
+          <hr>
+        </div>
+        <h1>Trending Movies</h1>
+        <p>Trending Movies all over the week</p>
+        <div class="w-75">
+          <hr>
+        </div>
+      </div>
+      <div
+        *ngFor="let movie of trendingMovies | paginate: { itemsPerPage: 10, currentPage: page , totalItems: APIresponse }"
+        class="col-lg-2 px-2 position-relative">
+        <img class="w-100 rounded" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt=""
+          routerLink="/details/{{movie.id}}">
+        <p class="position-absolute vote">{{movie.vote_average}}</p>
+        <h5 class="mb-5">{{movie.title}}</h5>
+      </div>
+      <!-- <pagination-controls class="text-center mt-4" (clcik)="getTrendingMovies(page)" (pageChange)="page = $event">
+      </pagination-controls> -->
+    </div>
+  </div>
+
+  <hr>
+  <div class="position-relative">
+    <div class="row pt-5 mt-5 ">
+      <div class="col-lg-4 d-flex justify-content-center flex-column">
+        <div class="w-25">
+          <hr>
+        </div>
+        <h1>Trending TV Shows</h1>
+        <p>Trending TV Shows all over the week</p>
+        <div class="w-75">
+          <hr>
+        </div>
+      </div>
+      <div
+        *ngFor="let TV of trendingTVShows| paginate: {id: 'foo', itemsPerPage: 10, currentPage: page , totalItems: APIresponse }"
+        class="col-lg-2 px-2 position-relative">
+        <img class="w-100 rounded" src="https://image.tmdb.org/t/p/original/{{TV.poster_path}}" alt=""
+          routerLink="/details/{{TV.id}}">
+        <p class="position-absolute vote">{{TV.vote_average}}</p>
+        <h5 class="mb-5">{{TV.name}}</h5>
+      </div>
+    </div>
+    <!-- <pagination-controls class="text-center mt-4" (clcik)="getTrendingMovies(page)" (pageChange)="page = $event">
+    </pagination-controls> -->
+  </div>
+  <hr>
+  <div class="position-relative">
+    <div class="row pt-5 mt-5 ">
+      <div class="col-lg-4 d-flex justify-content-center flex-column">
+        <div class="w-25">
+          <hr>
+        </div>
+        <h1>Trending People</h1>
+        <p>Trending People all over the week</p>
+        <div class="w-75">
+          <hr>
+        </div>
+      </div>
+      <div
+        *ngFor="let person of trendingPeople| paginate: {id: 'foo', itemsPerPage: 10, currentPage: page , totalItems: APIresponse }"
+        class="col-lg-2 px-2 position-relative">
+        <img class="w-100 rounded " src="https://image.tmdb.org/t/p/original/{{person.profile_path}}"
+          alt="{{person.poster_path}}" routerLink="/personDetails/{{person.id}}">
+        <!-- <p class="position-absolute vote">{{person.vote_average}}</p> -->
+        <h5 class="mb-5">{{person.name}}</h5>
+      </div>
+    </div>
+    <!-- <pagination-controls class="text-center mt-4" (clcik)="getTrendingMovies(page)" (pageChange)="page = $event">
+    </pagination-controls> -->
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<ngx-spinner></ngx-spinner>
+
+
+<div class="container">
+  <div class="full">
+    <div class="row mt-5">
+      <div class="col-lg-4 mt-5">
+        <img src="{{posterPath+personDetails.profile_path}}" alt="{{personDetails.name}}" class="w-100 rounded">
+      </div>
+      <div class="col-lg-8 mt-5 px-5">
+        <h1 class="my-3">{{personDetails.name}}</h1>
+        <button class="btn btn-warning">{{personDetails.known_for_department}}</button>
+        <div class="d-flex mt-4 align-items-center">
+          <!-- <p *ngFor="let genreName of personDetails.genres" class="btn btn-warning me-2">{{genreName.name}}</p> -->
+        </div>
+        <div class="details">
+          <p>Popularity: {{personDetails.popularity}}.</p>
+          <p>birth Place: {{personDetails.place_of_birth}}.</p>
+          <p>BirthDay: {{personDetails.birthday}}.</p>
+        </div>
+        <p class="h4 biography">{{personDetails.biography}}</p>
+      </div>
+    </div>
+  </div>
+</div>

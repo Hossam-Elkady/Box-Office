@@ -1,1 +1,22 @@
-<p>signin works!</p>
+<div class="container">
+  <h1 class="mt-5 ">login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="submitLoginFormGroup()">
+    <div class="my-3">
+      <label class="my-2 text-warning">Email</label>
+      <input type="email" class="form-control" placeholder="Enter your Email" formControlName="email">
+      <div class="errors" *ngIf="loginForm.controls.email.invalid&&loginForm.controls.email.touched">
+        <p class="text-warning my-2" *ngIf="loginForm.controls.email.errors?.email">enter valid email</p>
+        <p class="text-warning my-2" *ngIf="loginForm.controls.email.errors?.required">email is required</p>
+      </div>
+    </div>
+    <div class="my-3">
+      <label class="my-2 text-warning">Password</label>
+      <input type="password" class="form-control" placeholder="Enter your Password" formControlName="password">
+      <div class="errors d-none">
+        <p class="text-warning my-2" *ngIf="loginForm.controls.password.errors?.required">enter valid password</p>
+      </div>
+    </div>
+    <button [disabled]="loginForm.invalid" class="submit btn btn-warning mt-3 text-white">Login</button>
+    <p class="text-warning mt-5 text-capitalize" *ngIf="logined">{{error}}</p>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+// *{
+//   background-image: url(/assets/images/error.jpg);
+//   background-size: 100% 100%;
+// }
+
+div{
+  background-image: linear-gradient(135deg ,rgba(0,0,0,.3),rgba(0,0,0,0.9));
+  min-height: 88.1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

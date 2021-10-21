@@ -1,1 +1,16 @@
-<p>movies works!</p>
+<ngx-spinner></ngx-spinner>
+
+<div class="container">
+  <div class="mt-5">
+    <h1 class="text-capitalize mt-5 pt-5">trending Movies</h1>
+    <div class="row pt-5">
+      <div
+        *ngFor="let movie of trendingMovies | paginate: { itemsPerPage: 20, currentPage: page , totalItems: APIresponse }"
+        class="col-lg-2 col-md-4  px-2 movie" routerLink="/details/{{movie.id}}">
+        <img class="w-100" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="">
+        <h5 class="mb-4">{{movie.title}}</h5>
+      </div>
+      <pagination-controls class="text-center mt-4" (pageChange)="page = $event">
+      </pagination-controls>
+    </div>
+  </div>
