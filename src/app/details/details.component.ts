@@ -43,7 +43,6 @@ export class DetailsComponent implements OnInit {
       .subscribe((response) => {
         this.spinner.hide();
         this.itemDetails = response;
-        console.log(this.itemDetails);
       });
   }
 }

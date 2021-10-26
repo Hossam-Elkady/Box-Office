@@ -1,7 +1,16 @@
 <ngx-spinner></ngx-spinner>
 <div class="container">
+  <div class="mt-5 pt-5">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let movie of trendingMovies">
+        <ng-template carouselSlide [id]="movie.id">
+          <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" class="owl w-100">
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
   <div class="">
-    <div class="row pt-5 mt-5">
+    <div class="row mt-5">
       <div class="col-lg-4 d-flex justify-content-center flex-column ">
         <div class="w-25">
           <hr>
@@ -15,11 +24,20 @@
       <div
         *ngFor="let movie of trendingMovies | paginate: { itemsPerPage: 10, currentPage: page , totalItems: APIresponse }"
         class="col-lg-2 px-2 position-relative">
-        <img class="w-100 rounded" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt=""
+        <img class="w-100 rounded" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="{{movie.title}}"
           routerLink="/details/{{movie.id}}">
         <p class="position-absolute vote">{{movie.vote_average}}</p>
-        <h5 class="mb-5">{{movie.title}}</h5>
+        <h5 class="mb-4 pb-3">{{movie.title}}</h5>
       </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination mt-5 ">
+              <li (click)='getTrendingMovies(1)' class="page-item"><a class="page-link">1</a></li>
+              <li (click)='getTrendingMovies(2)' class="page-item"><a class="page-link">2</a></li>
+              <li (click)='getTrendingMovies(3)' class="page-item"><a class="page-link">3</a></li>
+            </ul>
+          </nav>
+        </div>
       <!-- <pagination-controls class="text-center mt-4" (clcik)="getTrendingMovies(page)" (pageChange)="page = $event">
       </pagination-controls> -->
     </div>
@@ -27,7 +45,16 @@
 
   <hr>
   <div class="position-relative">
-    <div class="row pt-5 mt-5 ">
+    <div class="mt-5 pt-5">
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let tv of trendingTVShows">
+          <ng-template carouselSlide [id]="tv.id">
+            <img src="https://image.tmdb.org/t/p/original/{{tv.poster_path}}" class="owl w-100">
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+    <div class="row mt-5 ">
       <div class="col-lg-4 d-flex justify-content-center flex-column">
         <div class="w-25">
           <hr>
@@ -41,18 +68,37 @@
       <div
         *ngFor="let TV of trendingTVShows| paginate: {id: 'foo', itemsPerPage: 10, currentPage: page , totalItems: APIresponse }"
         class="col-lg-2 px-2 position-relative">
-        <img class="w-100 rounded" src="https://image.tmdb.org/t/p/original/{{TV.poster_path}}" alt=""
+        <img class="w-100 rounded" src="https://image.tmdb.org/t/p/original/{{TV.poster_path}}" alt="{{TV.name}}"
           routerLink="/details/{{TV.id}}">
         <p class="position-absolute vote">{{TV.vote_average}}</p>
         <h5 class="mb-5">{{TV.name}}</h5>
       </div>
     </div>
+
+    <div class="d-flex justify-content-center align-items-center">
+      <nav aria-label="Page navigation example">
+          <ul class="pagination mt-5">
+            <li (click)='getTrendingTvShows(1)' class="page-item"><a class="page-link">1</a></li>
+            <li (click)='getTrendingTvShows(2)' class="page-item"><a class="page-link">2</a></li>
+            <li (click)='getTrendingTvShows(3)' class="page-item"><a class="page-link">3</a></li>
+          </ul>
+        </nav>
+      </div>
     <!-- <pagination-controls class="text-center mt-4" (clcik)="getTrendingMovies(page)" (pageChange)="page = $event">
     </pagination-controls> -->
   </div>
   <hr>
+  <div class="mt-5 pt-5">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let person of trendingPeople">
+        <ng-template carouselSlide [id]="person.id">
+          <img src="https://image.tmdb.org/t/p/original/{{person.profile_path}}" class="owl w-100">
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
   <div class="position-relative">
-    <div class="row pt-5 mt-5 ">
+    <div class="row mt-5 ">
       <div class="col-lg-4 d-flex justify-content-center flex-column">
         <div class="w-25">
           <hr>
@@ -67,11 +113,19 @@
         *ngFor="let person of trendingPeople| paginate: {id: 'foo', itemsPerPage: 10, currentPage: page , totalItems: APIresponse }"
         class="col-lg-2 px-2 position-relative">
         <img class="w-100 rounded " src="https://image.tmdb.org/t/p/original/{{person.profile_path}}"
-          alt="{{person.poster_path}}" routerLink="/personDetails/{{person.id}}">
-        <!-- <p class="position-absolute vote">{{person.vote_average}}</p> -->
-        <h5 class="mb-5">{{person.name}}</h5>
+          alt="{{person.name}}" routerLink="/personDetails/{{person.id}}">
+        <h5 class="mb-4 pb-3">{{person.name}}</h5>
       </div>
     </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <nav aria-label="Page navigation example">
+          <ul class="pagination mt-5">
+            <li (click)='getTrendingPeople(1)' class="page-item"><a class="page-link">1</a></li>
+            <li (click)='getTrendingPeople(2)' class="page-item"><a class="page-link">2</a></li>
+            <li (click)='getTrendingPeople(3)' class="page-item"><a class="page-link">3</a></li>
+          </ul>
+        </nav>
+      </div>
     <!-- <pagination-controls class="text-center mt-4" (clcik)="getTrendingMovies(page)" (pageChange)="page = $event">
     </pagination-controls> -->
   </div>

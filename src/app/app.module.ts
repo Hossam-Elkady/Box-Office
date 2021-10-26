@@ -20,7 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PersonDetailsComponent } from './person-details/person-details.component';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -49,7 +49,8 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
     HttpClientModule,
     NgxPaginationModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

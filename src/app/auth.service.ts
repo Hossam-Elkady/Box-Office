@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import{HttpClient} from "@angular/common/http";
-import { Observable, observable } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,12 +8,12 @@ import { Observable, observable } from 'rxjs';
 })
 export class AuthService {
 
-  constructor(private http:HttpClient) { }
-  signUp(registerData:any):Observable<any>{
-    return this.http.post("https://routeegypt.herokuapp.com/signup",registerData)
+  constructor(private http: HttpClient) { }
+  signUp(registerData: any): Observable<any> {
+    return this.http.post("https://routeegypt.herokuapp.com/signup", registerData)
   }
-  signIn(loginData:any):Observable<any>{
-    return this.http.post("https://routeegypt.herokuapp.com/signin",loginData)
+  signIn(loginData: any): Observable<any> {
+    return this.http.post("https://routeegypt.herokuapp.com/signin", loginData)
   }
 }
 

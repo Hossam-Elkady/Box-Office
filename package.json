@@ -20,8 +20,10 @@
     "@angular/router": "~12.2.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "^5.1.3",
+    "ngx-owl-carousel-o": "^6.0.0",
     "ngx-pagination": "^5.1.1",
     "ngx-spinner": "^12.0.0",
+    "owl.carousel": "^2.3.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

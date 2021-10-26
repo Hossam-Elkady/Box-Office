@@ -25,7 +25,6 @@ export class PersonDetailsComponent implements OnInit {
         this.spinner.hide()
         this.personDetails = response;
         this.spinner.hide();
-        console.log(this.personDetails)
       });
   }
   ngOnInit(): void {

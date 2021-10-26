@@ -11,7 +11,7 @@ import { AuthService } from '../auth.service';
 export class SigninComponent implements OnInit {
   loginForm:FormGroup=new FormGroup({
     "email":new FormControl(null,[Validators.required,Validators.email]),
-    "password":new FormControl(null,[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)])
+    "password":new FormControl(null,[Validators.required,Validators.required,Validators.minLength(5),Validators.maxLength(20)])
   })
   logined:boolean=false
   error:string=""
@@ -19,9 +19,7 @@ export class SigninComponent implements OnInit {
     if(this.loginForm.invalid){
       return
     }
-    // console.log(this.loginForm.value)
     this._AuthService.signIn(this.loginForm.value).subscribe((response)=>{
-      console.log(response)
       if(response.message=="success"){
         localStorage.setItem("token",response.token)
         this._Router.navigateByUrl("home")

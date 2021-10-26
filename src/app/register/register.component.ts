@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
     "first_name":new FormControl(null,[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
     "last_name":new FormControl(null,[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
     "email":new FormControl(null,[Validators.required,Validators.email]),
-    "password":new FormControl(null,[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)])
+    "password":new FormControl(null,[Validators.required,Validators.minLength(5),Validators.maxLength(20)])
   })
   registered:Boolean=false
   submitFormGroup(){
@@ -25,10 +25,12 @@ export class RegisterComponent implements OnInit {
     }
     this._AuthService.signUp(this.registerForm.value).subscribe((response)=>{
       if(response.message=="success"){
+        console.log(response)
         this.registered=false
         this._Router.navigateByUrl("login")
       }
       else{
+        console.log(response)
         this.registered=true
       }
     })

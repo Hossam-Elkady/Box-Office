@@ -23,10 +23,17 @@ nav{
   -ms-transform: translate(-50%,-50%);
   -o-transform: translate(-50%,-50%);
 }
-nav ul li a{
-  cursor: pointer;
-  background-color: #A58B13;
-  color: white;
+// nav ul li a{
+//   cursor: pointer;
+//   background-color: #A58B13;
+//   color: white;
+// }
+ul{
+  margin-bottom: 0px !important;
+  box-shadow: 4px 6px 20px black;
+}
+hr{
+  margin-top: 0px;
 }
 .last{
   border-top-right-radius: 5px;

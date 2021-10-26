@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TrendingService } from '../trending.service';
 
@@ -16,6 +17,32 @@ export class PeopleComponent implements OnInit {
   page:number=1;
   APIresponse: any;
 
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
+
+
   getTrendingPeople(pageNum: any) {
     this.spinner.show()
     this._TrendingService
@@ -27,7 +54,7 @@ export class PeopleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTrendingPeople(2)
+    this.getTrendingPeople(1)
   }
 
 }

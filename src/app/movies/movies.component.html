@@ -1,16 +1,37 @@
 <ngx-spinner></ngx-spinner>
 
 <div class="container">
-  <div class="mt-5">
-    <h1 class="text-capitalize mt-5 pt-5">trending Movies</h1>
-    <div class="row pt-5">
+  <div class="mt-5 pt-5">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let movie of trendingMovies">
+        <ng-template carouselSlide [id]="movie.id">
+          <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" class="owl w-100">
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
+  <div class="">
+    <h1 class="text-capitalize my-5">trending Movies</h1>
+    <div class="row">
       <div
         *ngFor="let movie of trendingMovies | paginate: { itemsPerPage: 20, currentPage: page , totalItems: APIresponse }"
         class="col-lg-2 col-md-4  px-2 movie" routerLink="/details/{{movie.id}}">
-        <img class="w-100" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="">
-        <h5 class="mb-4">{{movie.title}}</h5>
+        <img class="w-100 rounded" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="{{movie.title}}">
+        <h5 class="mb-4 pb-3 ">{{movie.title}}</h5>
       </div>
-      <pagination-controls class="text-center mt-4" (pageChange)="page = $event">
-      </pagination-controls>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li (click)='getTrendingMovies(1)' class="page-item"><a class="page-link">1</a></li>
+              <li (click)='getTrendingMovies(2)' class="page-item"><a class="page-link">2</a></li>
+              <li (click)='getTrendingMovies(3)' class="page-item"><a class="page-link">3</a></li>
+            </ul>
+          </nav>
+        </div>
+
+      <!-- <pagination-controls class="text-center mt-4" (pageChange)="page = $event">
+      </pagination-controls> -->
     </div>
   </div>
